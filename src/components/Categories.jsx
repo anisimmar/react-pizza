@@ -14,7 +14,7 @@ const Categories = (props) => {
                 <li
                     className={activeItem === null ? ' active ' : ''}
                     onClick={() => onSelectItem(null)}>Все</li>
-                {props.items.map((item, index) =>
+                {props.items && props.items.map((item, index) =>
                     <li
                         className={activeItem === index ? ' active ' : ''}
                         onClick={() => onSelectItem(index)}
