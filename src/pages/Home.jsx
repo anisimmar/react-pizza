@@ -2,9 +2,6 @@ import React from 'react';
 import {Categories, SortPopup, PizzaBlock} from "../components";
 
 const Home = (props) => {
-
-    console.log(props)
-
     return (
         <div className="container">
             <div className="content__top">
@@ -19,9 +16,9 @@ const Home = (props) => {
                     ]}/>
                 <SortPopup
                     items={[
-                        'популярности',
-                        'цене',
-                        'алфавиту'
+                        {name: 'популярности', type: 'popular'},
+                        {name: 'цене', type: 'price'},
+                        {name: 'алфавиту', type: 'alphabet'}
                     ]}
                 />
             </div>
