@@ -13,13 +13,11 @@ const filters = (state = initialState, action) => {
                 ...state,
                 sortBy: action.payload
             }
-            //break;
         case 'SET_CATEGORY':
             return {
                 ...state,
                 category: action.payload
             }
-            break;
         default:
             return {
                 ...state
