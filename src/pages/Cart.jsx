@@ -1,5 +1,5 @@
 import React from 'react';
-import {CartItem} from "../components";
+import {Button, CartItem} from "../components";
 import {useDispatch, useSelector} from "react-redux";
 import {clearCart, removeCartItem, plusItem, minusItem} from '../redux/actions/cart'
 import cartEmptyImage from '../assets/img/empty-cart.png'
@@ -32,6 +32,10 @@ const Cart = () => {
 
     const onMinusItem = (id) => {
         dispatch(minusItem(id))
+    }
+
+    const onClickOrder = () => {
+        alert('Заказ оформлен!')
     }
 
     return (
@@ -82,6 +86,7 @@ const Cart = () => {
                                 <div className="content__items">
                                     {addedPizzas.map(obj =>
                                         <CartItem
+                                            key={obj.id}
                                             name={obj.name}
                                             type={obj.type}
                                             size={obj.size}
@@ -108,9 +113,9 @@ const Cart = () => {
 
                                             <span>Вернуться назад</span>
                                         </Link>
-                                        <div className="button pay-btn">
-                                            <span>Оплатить сейчас</span>
-                                        </div>
+                                        <Button className="pay-btn">
+                                            <span onClick={onClickOrder}>Оплатить сейчас</span>
+                                        </Button>
                                     </div>
                                 </div>
                             </div>
