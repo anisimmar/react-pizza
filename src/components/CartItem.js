@@ -1,6 +1,20 @@
 import React from "react";
+import {Button} from "./index";
 
-const CartItem = ({name, type, size, totalPrice, totalCount}) => {
+const CartItem = ({id, name, type, size, totalPrice, totalCount, onRemoveItem, onPlusItem, onMinusItem}) => {
+
+    const handleRemoveClick = () => {
+        onRemoveItem(id)
+    }
+
+    const handlePlusItem = () => {
+        onPlusItem(id)
+    }
+
+    const handleMinusItem = () => {
+        onMinusItem(id)
+    }
+
     return (
         <div className="cart__item">
             <div className="cart__item-img">
@@ -15,7 +29,7 @@ const CartItem = ({name, type, size, totalPrice, totalCount}) => {
                 <p>{type} тесто, {size} см.</p>
             </div>
             <div className="cart__item-count">
-                <div className="button button--outline button--circle cart__item-count-minus">
+                <div className="button button--outline button--circle cart__item-count-minus" onClick={handleMinusItem}>
                     <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
                          xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -27,7 +41,7 @@ const CartItem = ({name, type, size, totalPrice, totalCount}) => {
                     </svg>
                 </div>
                 <b>{totalCount}</b>
-                <div className="button button--outline button--circle cart__item-count-plus">
+                <div className="button button--outline button--circle cart__item-count-plus" onClick={handlePlusItem}>
                     <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
                          xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -43,8 +57,8 @@ const CartItem = ({name, type, size, totalPrice, totalCount}) => {
             <div className="cart__item-price">
                 <b>{totalPrice} ₽</b>
             </div>
-            <div className="cart__item-remove">
-                <div className="button button--outline button--circle">
+            <div className="cart__item-remove" onClick={handleRemoveClick}>
+                <Button className="button--circle" outline>
                     <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
                          xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -54,8 +68,7 @@ const CartItem = ({name, type, size, totalPrice, totalCount}) => {
                             d="M5.75998 5.92001L3.83998 5.92001L0.959977 5.92001C0.429817 5.92001 -2.29533e-05 5.49017 -2.29301e-05 4.96001C-2.2907e-05 4.42985 0.429817 4.00001 0.959977 4.00001L3.83998 4L5.75998 4.00001L8.63998 4.00001C9.17014 4.00001 9.59998 4.42985 9.59998 4.96001C9.59998 5.49017 9.17014 5.92001 8.63998 5.92001L5.75998 5.92001Z"
                             fill="#EB5A1E"/>
                     </svg>
-
-                </div>
+                </Button>
             </div>
         </div>
     )
